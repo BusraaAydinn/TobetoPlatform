@@ -32,6 +32,17 @@ class Test_Tobeto_Platform_Login_Test:
             data.append((email,password))
 
         return data  
+    
+    @pytest.mark.parametrize("Email, Password", [("dojogij877@wikfee.com", "deneme123")])
+    def test_successful_login(self, Email, Password):
+        emailInput = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.EMAIL_XPATH)))
+        emailInput.send_keys(Email)
+        passwordInput = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.PASSWORD_XPATH)))
+        passwordInput.send_keys(Password)
+        loginButton = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.LOGIN_BUTTON_XPATH)))
+        loginButton.click()
+        systemMessage = WebDriverWait(self.driver,2).until(ec.presence_of_element_located((By.XPATH, c.SYSTEM_SUCCESSFUL_MESSAGE)))
+        assert systemMessage.text == "• Giriş başarılı." 
 
     @pytest.mark.parametrize("Email, Password", getData()) 
     def test_unsuccessful_login(self, Email, Password):
