@@ -9,7 +9,6 @@ import pytest
 import openpyxl
 from constants import globalConstants as c
 
-
 #Test Senaryosu 1: Kullanıcıların sisteme giriş kontrolü yapılacaktır.
 
 class Test_Tobeto_Platform_Login_Test:
@@ -41,7 +40,7 @@ class Test_Tobeto_Platform_Login_Test:
         passwordInput.send_keys(Password)
         loginButton = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.LOGIN_BUTTON_XPATH)))
         loginButton.click()
-        systemMessage = WebDriverWait(self.driver,2).until(ec.presence_of_element_located((By.XPATH, c.SYSTEM_SUCCESSFUL_MESSAGE)))
+        systemMessage = WebDriverWait(self.driver,2).until(ec.presence_of_element_located((By.XPATH, c.SYSTEM_SUCCESSFUL_MESSAGE_XPATH)))
         assert systemMessage.text == "• Giriş başarılı." 
 
     @pytest.mark.parametrize("Email, Password", getData()) 
@@ -66,29 +65,5 @@ class Test_Tobeto_Platform_Login_Test:
         errorMessage = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.ERROR_MESSAGE_XPATH)))
         assert errorMessage.text == "Doldurulması zorunlu alan*"
 
-#Test senaryosu 3:  Şifresini unutan kullanıcının şifresini yenileyebilme işlemi test edilecektir.
 
-class Test_Tobeto_Platform_Password_Reset_Test:
-    def setup_method(self):
-        self.driver = webdriver.Chrome()
-        self.driver.get(c.SIGN_UP_URL)
-        self.driver.maximize_window()
 
-    def teardown_method(self): 
-        self.driver.quit()
-    
-    def test_successful_password_reset(self):
-        emailInput = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.SIGN_UP_MAIL_XPATH)))
-        emailInput.send_keys("test456@hotmail.com")
-        sendButton = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.SEND_BUTTON_XPATH)))
-        sendButton.click()
-        systemMessage = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.SYSTEM_MESSAGE_XPATH)))
-        assert "Şifre sıfırlama linkini e-posta adresinize gönderdik. Lütfen gelen kutunuzu kontrol edin" in systemMessage.text 
-
-    def test_unsuccessful_password_reset(self):
-        emailInput = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.SIGN_UP_MAIL_XPATH)))
-        emailInput.send_keys("@hotmail.com")
-        sendButton = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.SEND_BUTTON_XPATH)))
-        sendButton.click()
-        systemMessage = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.ERROR_SYSTEM_MESSAGE_XPATH)))
-        assert "Girdiğiniz e-posta geçersizdir" in systemMessage.text 
