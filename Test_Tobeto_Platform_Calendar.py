@@ -21,12 +21,12 @@ class Test_Tobeto_Platform_Calendar:
     def test_calendar_open(self):
         calendarOpen = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.CLASS_NAME, "calendar-btn")))
         calendarOpen.click()
-        sleep(5)
+        sleep(3)
 
     def test_calendar_close(self):
         calendarOpen = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.CLASS_NAME, "calendar-btn")))
         calendarOpen.click()
-        sleep(5)
+        sleep(3)
         calendarClose = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, "//button[@class='btn-close btn-close-white']")))
         calendarClose.click()
-        sleep(5)
+        sleep(3)
