@@ -29,3 +29,4 @@ REGISTER_SYSTEM_SUCCESSFUL_MESSAGE_XPATH = "//*[@id='__next']/div/main/section/d
 REGISTER_MAIL_ERROR_MESSAGE_XPATH = "//*[@id='__next']/div/main/section/div/div/div[1]/div/div/form/p"
 PHONE_NUMBER_ERROR_MESSAGE1_XPATH = "/html/body/div[4]/div/div/div/div/div/label[4]/small/p"
 REGISTERED_EMAIL_ERROR_MESSAGE = "/html/body/div[1]/div/main/div[2]/div/div[2]"
+CHATBOX_XPATH = "//*[@id='exw-conversation-frame-body']/div/div"
