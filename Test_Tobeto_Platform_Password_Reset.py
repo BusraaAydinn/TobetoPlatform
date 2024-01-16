@@ -14,13 +14,15 @@ from constants import globalConstants as c
 class Test_Tobeto_Platform_Password_Reset_Test:
     def setup_method(self):
         self.driver = webdriver.Chrome()
-        self.driver.get(c.SIGN_UP_URL)
+        self.driver.get(c.BASE_URL)
         self.driver.maximize_window()
 
     def teardown_method(self): 
         self.driver.quit()
     
     def test_successful_password_reset(self):
+        resetButton = WebDriverWait(self.driver,10).until(ec.visibility_of_element_located((By.XPATH, c.PASSWORD_RESET_BUTTON_XPATH)))
+        resetButton.click()
         emailInput = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.SIGN_UP_MAIL_XPATH)))
         emailInput.send_keys("test456@hotmail.com")
         sendButton = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.SEND_BUTTON_XPATH)))
@@ -29,6 +31,8 @@ class Test_Tobeto_Platform_Password_Reset_Test:
         assert "Şifre sıfırlama linkini e-posta adresinize gönderdik. Lütfen gelen kutunuzu kontrol edin" in systemMessage.text 
 
     def test_unsuccessful_password_reset(self):
+        resetButton = WebDriverWait(self.driver,10).until(ec.visibility_of_element_located((By.XPATH, c.PASSWORD_RESET_BUTTON_XPATH)))
+        resetButton.click()
         emailInput = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.SIGN_UP_MAIL_XPATH)))
         emailInput.send_keys("@hotmail.com")
         sendButton = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.SEND_BUTTON_XPATH)))
