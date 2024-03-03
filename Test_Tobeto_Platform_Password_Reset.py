@@ -12,6 +12,7 @@ from constants import globalConstants as c
 #Test senaryosu 3:  Şifresini unutan kullanıcının şifresini yenileyebilme işlemi test edilecektir.
 
 class Test_Tobeto_Platform_Password_Reset_Test:
+
     def setup_method(self):
         self.driver = webdriver.Chrome()
         self.driver.get(c.BASE_URL)

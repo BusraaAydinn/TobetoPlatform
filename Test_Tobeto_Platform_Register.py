@@ -12,6 +12,7 @@ from constants import globalConstants as c
 #Test senaryosu 2:  Kullanıcının siteye kayıt olabilmesi durumu doğrulanacaktır.
         
 class Test_Tobeto_Platform_Register:
+
     def setup_method(self):
         self.driver = webdriver.Chrome()
         self.driver.get(c.REGISTER_URL)

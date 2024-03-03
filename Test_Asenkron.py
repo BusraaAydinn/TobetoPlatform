@@ -1,11 +1,13 @@
-import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from constants import globalConstants as c
-from selenium.webdriver.support import expected_conditions as ec
-from selenium.webdriver.support.wait import WebDriverWait
+from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
+from selenium.webdriver.support.wait import WebDriverWait 
+from selenium.webdriver.support import expected_conditions as ec 
+from selenium.webdriver.common.keys import Keys
+import pytest
+import openpyxl
+from constants import globalConstants as c
 from Valid_Login import Test_Valid_Login
 
 class Test_Asenkron:
@@ -23,7 +25,7 @@ class Test_Asenkron:
     def test_go_asenkron_course(self):
             
         validLoginClass = Test_Valid_Login(self.driver)
-        validLoginClass.valid_login("busraaaydinn67@gmail.com","********")
+        validLoginClass.valid_login("busraaaydinn67@gmail.com","ali.1994")
         sleep(3)
 
         self.driver.execute_script("window.scrollTo(0,300)")
