@@ -25,7 +25,7 @@ class Test_Asenkron:
     def test_go_asenkron_course(self):
             
         validLoginClass = Test_Valid_Login(self.driver)
-        validLoginClass.valid_login("busraaaydinn67@gmail.com","ali.1994")
+        validLoginClass.valid_login("busraaaydinn67@gmail.com","*******")
         sleep(3)
 
         self.driver.execute_script("window.scrollTo(0,300)")
