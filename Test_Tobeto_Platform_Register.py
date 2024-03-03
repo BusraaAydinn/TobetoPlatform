@@ -27,7 +27,7 @@ class Test_Tobeto_Platform_Register:
         lastnameInput = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.REGISTER_LAST_NAME_XPATH)))
         lastnameInput.send_keys("testsoyad")
         emailInput = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.REGISTER_MAIL_XPATH)))
-        emailInput.send_keys("testtest@gmail.com")
+        emailInput.send_keys("testtest123@gmail.com")
         passwordInput = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.REGISTER_PASSWORD_XPATH)))
         passwordInput.send_keys("test456")
         passwordAgainInput = WebDriverWait(self.driver,2).until(ec.visibility_of_element_located((By.XPATH, c.REGISTER_PASSWORD_AGAIN_XPATH)))
